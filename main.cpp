@@ -4,58 +4,46 @@
 #include <string>
 #include <algorithm>
 #include <cmath>
-#include <set>
-#include <map>
-
-#define ll long long;
-#define matrix vector<vector<int>>;
-
-const double PI = 3.1415192;
-const double PHI = 1.61803;
-const int INF = 1e9;
-
-using namespace std;
 
 int main()
 {
-    vector<pair<string, int>>DataBase;
-    string path = "database.txt";
+    std::string path = "database.txt";
     while(true)
     {
-        string command;
-        cout << "Enter command [new, print, search]\n";
-        cin >> command;
+        std::string command;
+        std::cout << "Enter command [new, print, search, close]\n";
+        std::cin >> command;
         if(command == "new")
         {
-            cout << "Enter parameters in format [Name Number]\n";
-            string name, number;
-            cin >> name >> number;
+            std::cout << "Enter parameters in format [Name Number]\n";
+            std::string name, number;
+            std::cin >> name >> number;
 
-            ofstream fout;
-            fout.open(path, ofstream::app);
+            std::ofstream fout;
+            fout.open(path, std::ofstream::app);
             if(!fout.is_open())
             {
-                cout << "Error! Database did not found!\n";  
+                std::cout << "Error! Database did not found!\n";  
             }else{
-                fout << name << '\t' << number << '\n';
+                fout << name << "\t" << number << '\n';
             }
             fout.close();
         }
         if(command == "print")
         {
-            ifstream fin;
+            std::ifstream fin;
             fin.open(path);
-            cout << "Name\tNumber\n"; 
+            std::cout << "Name\tNumber\n"; 
             if(!fin.is_open())
             {
-                cout << "Error! You can't open Database!\n";
+                std::cout << "Error! You can't open Database!\n";
             }else{
-                string str;
+                std::string str;
                 while(!fin.eof())
                 {
                     str = "";
                     getline(fin, str);
-                    cout << str << '\n';
+                    std::cout << str << '\n';
                 }
             }
             fin.close();
@@ -63,28 +51,33 @@ int main()
 
         if(command == "search")
         {
-            string client;
-            cout << "Enter name of client or number\n";
-            cin >> client;
+            std::string client;
+            std::cout << "Enter name of client or number\n";
+            std::cin >> client;
 
-            ifstream fin;
+            std::ifstream fin;
             fin.open(path);
             if(!fin.is_open())
             {
-                cout << "Error! You can't open Database!\n";
+                std::cout << "Error! You can't open Database!\n";
             }else{
-                string str;
+                std::string str;
                 while(!fin.eof())
                 {
                     str = "";
                     getline(fin, str);
-                    if(str.find(client) != string::npos)
+                    if(str.find(client) != std::string::npos)
                     {
-                        cout << "Client: " << str << '\n';
+                        std::cout << "Client: " << str << '\n';
                     }
                 }
             }
             fin.close();
         }
+        if(command == "close")
+        {
+            return 0;
+        }
     }
+    return 0;
 }
