@@ -35,7 +35,7 @@ int main()
             fout.open(path, ofstream::app);
             if(!fout.is_open())
             {
-                cout << "Error! DataBase did not found!\n";  
+                cout << "Error! Database did not found!\n";  
             }else{
                 fout << name << '\t' << number << '\n';
             }
@@ -48,7 +48,7 @@ int main()
             cout << "Name\tNumber\n"; 
             if(!fin.is_open())
             {
-                cout << "Error! You can't open DataBase!\n";
+                cout << "Error! You can't open Database!\n";
             }else{
                 string str;
                 while(!fin.eof())
@@ -71,7 +71,7 @@ int main()
             fin.open(path);
             if(!fin.is_open())
             {
-                cout << "Error! You can't open DataBase!\n";
+                cout << "Error! You can't open Database!\n";
             }else{
                 string str;
                 while(!fin.eof())
